@@ -1,7 +1,7 @@
 # Assigment 3.2 READme 
 ## creators
 Ben Margalit - 211896535
-Mor Saranga - 
+Mor Saranga - 205543606
 
 We create an cool server side application
 
@@ -19,6 +19,16 @@ we implement all the bonuses:
 - favorite players
 - add results
 - add events
+
+## env details
+tedious_userName= ******
+tedious_password= ******
+tedious_server= ******
+tedious_database= ******
+api_token= ******
+COOKIE_SECRET= ******
+bcrypt_saltRounds= ******
+PORT= ******
 
 ## Contributing
 Pull requests are welcome
