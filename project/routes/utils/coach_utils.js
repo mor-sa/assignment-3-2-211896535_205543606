@@ -20,6 +20,7 @@ async function getCoachDetailsById(coachId){
       coach_common_name:coach.data.data.common_name,
       coach_nationality:coach.data.data.nationality,
       coach_birthdate:coach.data.data.birthdate,
+      coach_birthcountry:coach.data.data.birthcountry
     };
   }
   catch{

@@ -78,6 +78,7 @@ async function getPlayerDetailsById(player_id){
       player_common_name:player.data.data.common_name,
       player_nationality:player.data.data.nationality,
       player_birthdate:player.data.data.birthdate,
+      player_birthcountry:player.data.data.birthcountry,
       player_height:player.data.data.height,
       player_weight:player.data.data.weight
     };
