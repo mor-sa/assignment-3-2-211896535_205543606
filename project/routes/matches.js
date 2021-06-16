@@ -7,6 +7,30 @@ const referees_utils = require("./utils/referees_utils");
 const users_utils = require("./utils/users_utils");
 const axios = require("axios");
 
+
+/**
+ * This path return all the  past matchs
+ */
+ router.get("/getPastMatches", async (req, res, next) => {
+  try {
+    const matches = await matches_utils.getPastGames();
+    res.send(matches);
+  } catch (error) {
+    next(error);
+  }
+});
+/**
+ * This path return all the  future matchs
+ */
+router.get("/getFutureMatches", async (req, res, next) => {
+  try {
+    const matches = await matches_utils.getFutureGames();
+    res.send(matches);
+  } catch (error) {
+    next(error);
+  }
+});
+
 /**
  * Authenticate all incoming requests by middleware
  */
@@ -137,28 +161,7 @@ router.get("/getAllMatchesSortByTeam", async (req, res, next) => {
   }
 });
 
-/**
- * This path return all the  past matchs
- */
-router.get("/getPastMatches", async (req, res, next) => {
-  try {
-    const matches = await matches_utils.getPastGames();
-    res.send(matches);
-  } catch (error) {
-    next(error);
-  }
-});
-/**
- * This path return all the  future matchs
- */
-router.get("/getFutureMatches", async (req, res, next) => {
-  try {
-    const matches = await matches_utils.getFutureGames();
-    res.send(matches);
-  } catch (error) {
-    next(error);
-  }
-});
+
 
 module.exports = router;
 
