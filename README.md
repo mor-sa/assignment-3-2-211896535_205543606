@@ -1,3 +1,4 @@
+comment: all updates from 16-6 are for client side
 # Assigment 3.2 READme 
 ## creators
 Ben Margalit - 211896535
