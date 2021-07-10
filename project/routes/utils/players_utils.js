@@ -30,7 +30,6 @@ async function getPlayersInfo(players_ids_list) {
       )
     );
     let players_info = await Promise.all(promises);
-    console.log("GOT TO get players info");
     return extractRelevantPlayerData(players_info);
   }
   catch{
@@ -43,6 +42,7 @@ async function getPlayersInfo(players_ids_list) {
 function extractRelevantPlayerData(players_info) {
   return players_info.map((player_info) => {
     const { player_id, fullname, image_path, position_id } = player_info.data.data;
+    console.log(player_id);
     const { name } = player_info.data.data.team.data;
     console.log(name);
     return {
