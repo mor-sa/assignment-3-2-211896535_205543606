@@ -800,6 +800,10 @@ components:
           type: string
           description: team name
           example: København
+        logo:
+          type: string
+          description: team logo url
+          example: https://cdn.sportmonks.com/images//soccer/teams/21/85.png
         players:
           type: array
           items:
@@ -879,12 +883,12 @@ components:
           example: "2021-04-25T21:30:00"
         home_team:
           type: string
-          description: 3 letters of the home team
-          example: FCB
+          description: string of the home team's id
+          example: "939"
         away_team:
           type: string
-          description: 3 letters of the away team
-          example: RMA
+          description: string of the away team's id
+          example: "2447"
         referee_id:
           type: integer
           description: referee's id
@@ -911,7 +915,7 @@ components:
         event_hour:
           type: dateTime
           description: the event's date and time to add to the match
-          example: "2021-04-21 21:30:00"
+          example: "2021-04-21T21:30:00"
         event_minute:
           type: int
           description: the even'ts minute it happened on the match

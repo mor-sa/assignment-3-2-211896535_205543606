@@ -35,10 +35,24 @@ async function getLeagueDetails() {
       }
     );
   }
+  let allTeamsInLeague = [];
+  let season_id = league.data.data.season.data.id;
+  let teamsFromAPI = await axios.get(`${api_domain}/teams/season/${season_id}`,
+  {
+    params: {
+      api_token: process.env.api_token,
+    },
+  });
+  if(teamsFromAPI){
+    teamsFromAPI.data.data.map((team_info)=>{
+        allTeamsInLeague.push(team_info.name);
+      });
+    }
   return {
     league_name: league.data.data.name,
     current_season_name: league.data.data.season.data.name,
     current_stage_name: stage.data.data.name,
+    all_teams: allTeamsInLeague
     // next game details should come from DB
   };
   }

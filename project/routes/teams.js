@@ -11,6 +11,10 @@ const matches_utils = require("./utils/matches_utils");
 router.get("/teamFullDetails/:teamId", async (req, res, next) => {
   let results = [];
   try {
+    const teamsInfo = await teams_utils.getInfoOfTeam(req.params.teamId);
+    const teamName = teamsInfo.team_name;
+    console.log(teamName);
+    const teamLogo = teamsInfo.team_logo;
     const team_details = await players_utils.getPlayersByTeam(req.params.teamId);
     //we should keep implementing team page.....
     const coach_id = await teams_utils.getCoachByTeam(req.params.teamId);
@@ -20,12 +24,14 @@ router.get("/teamFullDetails/:teamId", async (req, res, next) => {
     const future_matches = await matches_utils.getFutureMatchesByTeam(req.params.teamId);
     console.log(future_matches);
     //insert to results
+    results.push(teamName);
+    results.push(teamLogo);
     results.push(team_details);
     results.push(coach_details);
     results.push(past_matches);
     results.push(future_matches);
     res.send(results);
-  } catch (error) {
+  } catch (error){
     next(error);
   }
 });

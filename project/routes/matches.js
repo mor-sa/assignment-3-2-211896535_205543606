@@ -113,11 +113,17 @@ router.post("/addEventCalendar", async (req, res, next) => {
     throw { status: 401, message: "not admin, action not allowed" };
     const event_exist = await matches_utils.checkIfEventExist(req.body.event_id);
     if (event_exist)
-      throw { status: 409, message: "event_id taken" };
+      throw { status: 409, message: "event_id is taken"};
     const match_exist = await matches_utils.checkIfMatchExist(req.body.match_id);
     if (!match_exist)
-      throw { status: 409, message: "add event to a non existing match its impossible" };
-    await matches_utils.addEventCalendar(req.body.event_id,req.body.event_date,req.body.event_hour,req.body.event_minute,req.body.event_description,req.body.match_id);
+      throw { status: 409, message: "add event to a non existing match is impossible" };
+    const match_id = req.body.match_id;
+    const event_id = req.body.event_id;
+    const event_date = req.body.event_date;
+    const event_hour = req.body.event_hour;
+    const event_minute = req.body.event_minute;
+    const event_description = req.body.event_description;
+    await matches_utils.addEventCalendar(event_id,event_date,event_hour,event_minute,event_description,match_id);
     res.status(201).send("event successfully updateded");
   } catch (error) {
     next(error);

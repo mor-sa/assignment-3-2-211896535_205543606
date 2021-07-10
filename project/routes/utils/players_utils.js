@@ -30,10 +30,12 @@ async function getPlayersInfo(players_ids_list) {
       )
     );
     let players_info = await Promise.all(promises);
+    console.log("GOT TO get players info");
     return extractRelevantPlayerData(players_info);
   }
   catch{
-    return "one or more of the players do not exist!"
+    res.status(404).send("one or more of the players do not exist!");
+    // return "one or more of the players do not exist!"
   }
 
 }
@@ -42,6 +44,7 @@ function extractRelevantPlayerData(players_info) {
   return players_info.map((player_info) => {
     const { player_id, fullname, image_path, position_id } = player_info.data.data;
     const { name } = player_info.data.data.team.data;
+    console.log(name);
     return {
       id: player_id,
       name: fullname,
